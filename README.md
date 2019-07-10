@@ -1,4 +1,4 @@
-# @fuzzysaj/tiny
+# @fuzzysaj/ip-to-geo-location
 
 [![npm (scoped)](https://img.shields.io/npm/v/@fuzzysaj/ip-to-geo-location.svg)](https://www.npmjs.com/package/@fuzzysaj/ip-to-geo-location)
 
