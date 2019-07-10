@@ -9,11 +9,17 @@ import { expect } from 'chai';
 
 describe ('End-to-end', function() {
 
-  describe('ipToGeo', function() {
-    it('correctly looks up ip address for Google', async function() {
+  describe('Basic ipToGeo lookup', function() {
+    it('When google.com ip address is searched for, it finds location information', async function() {
       const ip = '172.217.11.164';
       const loc: Location = await ipToGeo(ip);
       expect(loc).to.not.be.null;
+    });
+
+    it('When an invalid ip address 0.0.0.0 is searched for, it returns null', async function() {
+      const ip = '0.0.0.0';
+      const loc: Location = await ipToGeo(ip);
+      expect(loc).to.be.null;
     });
 
   });
