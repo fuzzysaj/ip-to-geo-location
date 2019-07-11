@@ -14,6 +14,7 @@
   "author": "fuzzysaj",
   "dependencies": {
     "@types/chai": "^4.1.7",
+    "@types/debug": "^4.1.4",
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.6.2",
     "@types/tar-stream": "^1.6.1",

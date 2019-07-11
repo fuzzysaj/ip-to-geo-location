@@ -1,5 +1,5 @@
 import { Location } from './Location';
-import * as Debug from 'debug';
+import Debug from 'debug';
 const debug = Debug('ip-to-geo-location');
 
 export async function ipToGeo(ip: string): Promise<Location> {

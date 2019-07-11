@@ -1,2 +1,4 @@
 dist
 node_modules
+data/GeoLite2-City.mmdb
+data/ne_10m_admin_1_states_provinces.json
