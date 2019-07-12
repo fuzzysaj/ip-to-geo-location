@@ -55,17 +55,18 @@ export async function updateRegionFile(): Promise<boolean> {
     url: regionDbUrl,
     responseType: "stream"
   });
-
-  const ws = shp2json(resp.data).pipe(fs.createWriteStream(tempRegionFilePath));
-  ws.on('close', async () => {
-    debug(`Finished downloading ${tempRegionFilePath} with status ${resp.status}.`);
-    await promisify(fs.rename)(tempRegionFilePath, finalRegionFilePath);
-    debug(`Renamed to ${finalRegionFilePath}`);
-    return true;
-  });
-
-  ws.on('error', (err: Error) => {
-    debug(`Download to ${tempRegionFilePath} failed: ${err.toString()}`);
-    return false;
+  const ws = fs.createWriteStream(tempRegionFilePath);
+  shp2json(resp.data).pipe(ws);
+  return new Promise(function (resolve, reject) {
+    ws.on('finish', async () => {
+      debug(`Finished downloading ${tempRegionFilePath} with status ${resp.status}.`);
+      await promisify(fs.rename)(tempRegionFilePath, finalRegionFilePath);
+      debug(`Renamed to ${finalRegionFilePath}`);
+      resolve(true);
+    });
+    ws.on('error', (err: Error) => {
+      debug(`Download to ${tempRegionFilePath} failed: ${err.toString()}`);
+      reject(err);
+    });
   });
 }

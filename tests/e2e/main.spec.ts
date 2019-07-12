@@ -7,7 +7,7 @@ import { expect } from 'chai';
 // we will assume we can use the /data directory
 // need to test use of data directory when this is used as an npm package
 
-describe ('End-to-end', function() {
+describe.skip('End-to-end', function() {
 
   describe('Basic ipToGeo lookup', function() {
     it('When google.com ip address is searched for, it finds location information', async function() {

@@ -41,7 +41,7 @@ export async function isIpCityFileCurrent(): Promise<boolean> {
  * if success.  If not successful, the original file remains.
  * Returns true on success.
  */
-async function updateCityFile(): Promise<boolean> {
+export async function updateIpCityFile(): Promise<boolean> {
   if (await isIpCityFileCurrent()) {
     const daysOld = ((await msSinceLastUpdate(finalIpCityFilePath))/msPerDay).toFixed(1);
     debug(`Skipping download since ${finalIpCityFilePath} already exists ` +
