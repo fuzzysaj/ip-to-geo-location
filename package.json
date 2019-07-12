@@ -2,7 +2,7 @@
   "name": "@fuzzysaj/ip-to-geo-location",
   "version": "1.0.0",
   "scripts": {
-    "prepublish": "tsc",
+    "prepare": "tsc",
     "cmd-line-lookup": "DEBUG=ip-to-geo-location ts-node src/cmd-line-lookup.ts",
     "test": "npm-run-all e2e-test",
     "e2e-test": "DEBUG=ip-to-geo-location mocha -r ts-node/register \"tests/e2e/**/*.spec.ts\"",

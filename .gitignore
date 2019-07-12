@@ -1,4 +1,7 @@
 dist
 node_modules
-data/GeoLite2-City.mmdb
 data/ne_10m_admin_1_states_provinces.json
+data/ne_10m_admin_1_states_provinces.temp.json
+data/GeoLite2-City.mmdb
+data/GeoLite2-City.temp.mmdb
+*.tgz
