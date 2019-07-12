@@ -13,12 +13,13 @@ $ npm install @fuzzysaj/ip-to-geo-location
 With JavaScript:
 
 ```js
-const ipToGeo = require('@fuzzysaj/ip-to-geo-location');
+const ipToGeo = require('@fuzzysaj/ip-to-geo-location').ipToGeo;
 
-async function main() {
-  const loc = await ipToGeo('172.217.11.164');  // www.googole.com
-  // => { city: 'San Hose', region: 'California', country: 'United States of America', ... }
-}
+(async ()=> {
+  const loc = await ipToGeo('1.72.0.0');
+  // -> { country: "Japan", country_code: "JP", region: "Tokyo", region_code: "13",
+  //      region_type: "Metropolis", city: "Setagaya-ku", lat: 35.6422, lon: 139.6475 }
+})();
 ```
 
 With TypeScript:
@@ -26,8 +27,9 @@ With TypeScript:
 ```ts
 import { ipToGeo, Location } from '@fuzzysaj/ip-to-geo-location'
 
-async function main() {
-  const loc: Location = await ipToGeo('172.217.11.164');  // www.googole.com
-  // => { city: 'San Hose', region: 'California', country: 'United States of America', ... }
-}
+(async ()=> {
+  const loc: Location = await ipToGeo('1.72.0.0');
+  // -> { country: "Japan", country_code: "JP", region: "Tokyo", region_code: "13",
+  //      region_type: "Metropolis", city: "Setagaya-ku", lat: 35.6422, lon: 139.6475 }
+})();
 ```
