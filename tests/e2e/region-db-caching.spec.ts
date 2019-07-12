@@ -1,4 +1,4 @@
-import { delRegionGeoJsonDbs, okRegionFile, isRegionFileCurrent,
+import { delRegionFile, okRegionFile, isRegionFileCurrent,
   updateRegionFile } from '../../src/region-db-update';
 import 'mocha';
 import { expect } from 'chai';
@@ -6,20 +6,20 @@ import { expect } from 'chai';
 describe ('Region geo database auto-caching', function() {
 
   it('When no cached regions file exist, region file reported as not current', async function() {
-    await delRegionGeoJsonDbs();
+    await delRegionFile();
     const isCurrent = await isRegionFileCurrent();
     expect(isCurrent).to.be.false;
   });
 
   it('When no cached regions file exist, region file reported as not ok', async function () {
-    await delRegionGeoJsonDbs();
+    await delRegionFile();
     const isOk = await okRegionFile();
     expect(isOk).to.be.false;
   });
 
   it.skip('Updates are successful when no cached file exists initially.', async function() {
     this.timeout(30000); // allow 30 seconds just for this test
-    await delRegionGeoJsonDbs();
+    await delRegionFile();
     const updateSuccess = await updateRegionFile();
     expect(updateSuccess).to.be.true;
     const isCurrent = await isRegionFileCurrent();

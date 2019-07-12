@@ -15,7 +15,7 @@ const daysBetweenRegionUpdates = 30;
 const msBetweenRegionUpdates = daysBetweenRegionUpdates*msPerDay;  // 30 days between updates
 
 /** Deletes final and temporary GeoJson db files if they exist.  Returns void. */
-export async function delRegionGeoJsonDbs(): Promise<void> {
+export async function delRegionFile(): Promise<void> {
   await delFileIfExists(tempRegionFilePath);
   await delFileIfExists(finalRegionFilePath);
 }
