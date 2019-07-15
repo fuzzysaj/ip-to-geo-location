@@ -18,7 +18,7 @@
     "@types/chai": "^4.1.7",
     "@types/debug": "^4.1.4",
     "@types/mocha": "^5.2.7",
-    "@types/node": "^12.6.2",
+    "@types/node": "^12.6.3",
     "@types/tar-stream": "^1.6.1",
     "axios": "^0.19.0",
     "chai": "^4.2.0",
