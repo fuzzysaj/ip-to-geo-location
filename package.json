@@ -1,6 +1,6 @@
 {
   "name": "@fuzzysaj/ip-to-geo-location",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "prepare": "tsc",
     "cmd-line-lookup": "DEBUG=ip-to-geo-location ts-node src/cmd-line-lookup.ts",
