@@ -1,6 +1,7 @@
 # @fuzzysaj/ip-to-geo-location
 
 [![npm (scoped)](https://img.shields.io/npm/v/@fuzzysaj/ip-to-geo-location.svg)](https://www.npmjs.com/package/@fuzzysaj/ip-to-geo-location)
+[![Build Status](https://travis-ci.org/fuzzysaj/ip-to-geo-location.svg?branch=master)](https://travis-ci.org/fuzzysaj/ip-to-geo-location)
 
 A program to look up geo-location information from an IP address.  The program downloads freely available ip to location and map databases from MaxMind and Natural Earth on a regular schedule so that lookups can be done locally, very quickly.
 
