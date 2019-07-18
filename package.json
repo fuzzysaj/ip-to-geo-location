@@ -29,6 +29,7 @@
   "types": "dist/index.d.ts",
   "author": "fuzzysaj",
   "dependencies": {
+    "@fuzzysaj/location-to-usa-county": "file:../location-to-usa-county",
     "axios": "^0.19.0",
     "chai": "^4.2.0",
     "debug": "^4.1.1",

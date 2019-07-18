@@ -5,8 +5,10 @@ import { updateRegionFile } from './region-db-update';
 import { updateIpCityFile } from './ip-city-db-update';
 import maxmind, { CityResponse } from 'maxmind';
 import * as gjgLookup from 'geojson-geometries-lookup';
+import { County, locToCounty } from '@fuzzysaj/location-to-usa-county';
 
 import Debug from 'debug';
+import { stringify } from 'querystring';
 const debug = Debug('ip-to-geo-location');
 
 let glookup = null;
@@ -68,6 +70,15 @@ export async function ipToGeo(ip: string): Promise<Location> {
   loc.region = adm1_name;
   loc.region_code = adm1_code;
   loc.region_type = props.type_en;
+  if (loc.country_code === 'US') {
+    debug(`Country is US.  Lookup up county.`);
+    const county: County = locToCounty(loc.lat, loc.lon);
+    if (county) {
+      loc.county = county.county_name;
+      loc.county_fips = county.county_fips;
+    }
+  }
+
 
   return loc;
 };
