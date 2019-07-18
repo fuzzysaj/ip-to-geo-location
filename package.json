@@ -1,6 +1,6 @@
 {
   "name": "@fuzzysaj/ip-to-geo-location",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "scripts": {
     "prepare": "tsc",
     "cmd-line-lookup": "DEBUG=ip-to-geo-location ts-node src/cmd-line-lookup.ts",
@@ -29,7 +29,7 @@
   "types": "dist/index.d.ts",
   "author": "fuzzysaj",
   "dependencies": {
-    "@fuzzysaj/location-to-usa-county": "file:../location-to-usa-county",
+    "@fuzzysaj/location-to-usa-county": "^1.0.0",
     "axios": "^0.19.0",
     "chai": "^4.2.0",
     "debug": "^4.1.1",

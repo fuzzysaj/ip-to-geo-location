@@ -17,7 +17,7 @@ describe ('Region geo database auto-caching', function() {
     expect(isOk).to.be.false;
   });
 
-  it.skip('Updates are successful when no cached file exists initially.', async function() {
+  it('Updates are successful when no cached file exists initially.', async function() {
     this.timeout(30000); // allow 30 seconds just for this test
     await delRegionFile();
     const updateSuccess = await updateRegionFile();
