@@ -8,7 +8,9 @@ const debug = Debug('ip-to-geo-location');
 const ipCityRootName = 'GeoLite2-City';
 const finalIpCityFilePath = path.resolve(__dirname, '../data/', ipCityRootName + '.mmdb');
 const tempIpCityFilePath = path.resolve(__dirname, '../data/', ipCityRootName + '.temp.mmdb');
-const ipCityUrl = 'https://geolite.maxmind.com/download/geoip/database/' + ipCityRootName + '.tar.gz';
+//const ipCityUrl = 'https://geolite.maxmind.com/download/geoip/database/' + ipCityRootName + '.tar.gz';
+const ipCityUrl = `https://download.maxmind.com/app/geoip_download?edition_id=${ipCityRootName}&license_key=${process.env.MAXMIND_LICENSE_KEY}&suffix=tar.gz`
+
 
 const msPerDay = 1000*60*60*24;
 const daysBetweenIpCityUpdates = 7;

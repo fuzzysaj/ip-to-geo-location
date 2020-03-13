@@ -7,3 +7,4 @@ data/GeoLite2-City.temp.mmdb
 *.tgz
 coverage
 .nyc_output
+.env
