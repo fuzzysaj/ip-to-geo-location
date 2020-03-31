@@ -11,6 +11,7 @@ describe('ip-to-city-country', function() {
   const phxLatLon: Location = { lat: 33.5038, lon: -112.0253 };
   let ipToCityCountryLoc: ((ip: string) => Location);
   before(async function() {
+    this.timeout(30000); // allow 30 seconds timeout
     ipToCityCountryLoc = await getIpToCityCountryFn();
   })
 

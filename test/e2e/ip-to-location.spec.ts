@@ -6,10 +6,11 @@ const chaiAlmost = require('chai-almost');
 chai.use(chaiAlmost(0.01)); // specify number equality tolerance
 const expect = chai.expect;
 
-describe('ip-to-geo-location', function() {
+describe('ip-to-location', function() {
 
   let ipToLocation: ((ip: string) => Location);
   before(async function() {
+    this.timeout(30000); // allow 30 seconds timeout
     ipToLocation = await getIpToLocationFn();
   })
 
