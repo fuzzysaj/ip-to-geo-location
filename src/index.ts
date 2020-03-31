@@ -1,2 +1,2 @@
-export { ipToGeo } from './ip-to-geo-location'
+export { getIpToLocationFn } from './ip-to-location'
 export { Location } from './Location'

@@ -14,25 +14,12 @@ $ npm install @fuzzysaj/ip-to-geo-location
 
 ## Usage
 
-With JavaScript:
-
 ```js
-const ipToGeo = require('@fuzzysaj/ip-to-geo-location').ipToGeo;
+import { getIpToLocationFn } from '@fuzzysaj/ip-to-geo-location'
 
 (async ()=> {
-  const loc = await ipToGeo('1.72.0.0');
-  // -> { country: "Japan", country_code: "JP", region: "Tokyo", region_code: "13",
-  //      region_type: "Metropolis", city: "Setagaya-ku", lat: 35.6422, lon: 139.6475 }
-})();
-```
-
-With TypeScript:
-
-```ts
-import { ipToGeo, Location } from '@fuzzysaj/ip-to-geo-location'
-
-(async ()=> {
-  const loc: Location = await ipToGeo('3.128.0.0');
+  const ipToLoc = await getIpToLocationFn();
+  const loc = await ipToLoc('3.128.0.0');
   // -> { country: "United States", country_code: "US", region: "Washington",
   //      region_code: "WA", region_type: "State", city: "Seattle",
   //      lat: 47.6348, lon: -122.3451, county: "King", county_fips: "53033" }

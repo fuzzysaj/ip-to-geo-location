@@ -3,7 +3,7 @@ import { delIpCityFile, okIpCityFile, isIpCityFileCurrent,
 import 'mocha';
 import { expect } from 'chai';
 
-describe ('Ip to city database auto-caching', function() {
+describe('Ip to city database auto-caching', function() {
 
   it('When no cached file exist, file reported as not current', async function() {
     await delIpCityFile();
