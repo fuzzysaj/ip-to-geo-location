@@ -3,7 +3,7 @@ import { getIpToLocationFn } from '../../src/ip-to-location';
 import 'mocha';
 import * as chai from 'chai';
 const chaiAlmost = require('chai-almost');
-chai.use(chaiAlmost(0.01)); // specify number equality tolerance
+chai.use(chaiAlmost(0.1)); // specify number equality tolerance
 const expect = chai.expect;
 
 describe('ip-to-location', function() {
