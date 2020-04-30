@@ -5,6 +5,24 @@ import Debug from 'debug';
 const debug = Debug('ip-to-geo-location');
 
 /**
+ * Parses ISO 3661-2 input strings and returns the region part.
+ * Automatically converts to upper case.  Empty string returned on failure.
+ * Will accept extra characters at end of string, but will only return
+ * valid portion.
+ * @param iso_3116_2 ISO 3116-2 conforming input string
+ * @returns region code from string or empty string of non-conforming
+ */
+export function iso3116_2_toRegionCode(iso_3116_2: string): string {
+  const regEx = /^([A-Z]{2})-([A-Z0-9]{1,3})/i;
+  let found;
+  if (iso_3116_2 && (found = iso_3116_2.match(regEx))) {
+    return found[2].toUpperCase();
+  }
+  debug(`'${iso_3116_2}' does not conform to ISO 3166-2 standard.`);
+  return '';
+}
+
+/**
  * Create a function that returns a copy of a Location with state/provice information added.
  * Uses the built-in admin1 spatial index created from Natural Earth shapefiles.
  */
@@ -32,7 +50,7 @@ const addRegion = admin1SpatialIndex =>
   return {
     ...loc,
     region: props.name, // adm1 name
-    region_code: props.iso_3166_2.split("-")[1], // adm1 code
+    region_code: iso3116_2_toRegionCode(props.iso_3166_2), // adm1 code
     region_type: props.type_en 
   }
 }

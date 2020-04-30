@@ -1,5 +1,5 @@
 import { Location } from '../../src';
-import { getAddRegionFn } from '../../src/loc-to-region';
+import { getAddRegionFn, iso3116_2_toRegionCode } from '../../src/loc-to-region';
 import 'mocha';
 import { expect } from 'chai';
 
@@ -11,6 +11,21 @@ describe('ip-to-region', function() {
     addRegion = await getAddRegionFn();
   });
 
+  describe('iso3116_2_toRegionCode', function() {
+    it('Handles null and non-conforming ISO 3166-2 codes', function() {
+      expect(iso3116_2_toRegionCode(null)).to.equal('');
+      expect(iso3116_2_toRegionCode(' US-AZ')).to.equal('');
+      expect(iso3116_2_toRegionCode('US-~AZ')).to.equal('');
+      expect(iso3116_2_toRegionCode('U-AZ')).to.equal('');
+    });
+
+    it('Handles conforming ISO 3166-2 codes and conforming codes with extra characters on end', function() {
+      expect(iso3116_2_toRegionCode('US-AZ~')).to.equal('AZ');
+      expect(iso3116_2_toRegionCode('uS-aZ1')).to.equal('AZ1');
+      expect(iso3116_2_toRegionCode('uS-aZ12')).to.equal('AZ1');
+    });
+
+  });
 
   describe('addRegion', function() {
 
