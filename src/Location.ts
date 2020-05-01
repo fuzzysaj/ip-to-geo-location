@@ -6,6 +6,8 @@ export interface Location {
   region_type?: string, // type_en
   county?: string,
   county_fips?: string,
+  continent?: string,
+  continent_code?: string,
   city?: string
   lat: number,
   lon: number

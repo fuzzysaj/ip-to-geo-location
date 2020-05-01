@@ -4,6 +4,7 @@
   "scripts": {
     "prepare": "tsc",
     "cmd-line-lookup": "DEBUG=ip-to-geo-location ts-node -r dotenv/config src/cmd-line-lookup.ts",
+    "conti": "DEBUG=* ts-node -r dotenv/config src/loc-to-continent.ts",
     "pretest": "tsc -p .",
     "test": "nyc mocha",
     "quick-test": "DEBUG=* ts-node -r dotenv/config test/misc/quick-test.ts",
@@ -33,6 +34,7 @@
     "@fuzzysaj/nat-earth-geojson-cache": "^1.0.4",
     "axios": "^0.19.2",
     "chai": "^4.2.0",
+    "csv-parse": "^4.9.0",
     "debug": "^4.1.1",
     "dotenv": "^8.2.0",
     "geojson-geometries-lookup": "^0.3.1",
