@@ -1,6 +1,6 @@
 {
   "name": "@fuzzysaj/ip-to-geo-location",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "scripts": {
     "prepare": "tsc",
     "cmd-line-lookup": "DEBUG=ip-to-geo-location ts-node -r dotenv/config src/cmd-line-lookup.ts",

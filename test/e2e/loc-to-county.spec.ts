@@ -25,13 +25,13 @@ describe('loc-to-county', function() {
     it('Finds correct county for known lat lon and missing country_code', function() {
       const loc = addCounty(phxLatLon);
       expect(loc.county).to.equal('Maricopa');
-      expect(loc.county_fips).to.equal('04013');
+      expect(loc.county_code).to.equal('04013');
     });
 
     it('Finds correct county for known lat lon with US country_code', function() {
       const loc = addCounty({...phxLatLon, country_code: 'us'});
       expect(loc.county).to.equal('Maricopa');
-      expect(loc.county_fips).to.equal('04013');
+      expect(loc.county_code).to.equal('04013');
     });
 
   });

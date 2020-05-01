@@ -5,7 +5,7 @@ export interface Location {
   region_code?: string,
   region_type?: string, // type_en
   county?: string,
-  county_fips?: string,
+  county_code?: string,
   continent?: string,
   continent_code?: string,
   city?: string

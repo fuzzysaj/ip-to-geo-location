@@ -44,7 +44,7 @@ describe('ip-to-location', function() {
       expect(loc.region_type).to.equal('State');
 
       expect(loc.county).to.equal('Maricopa');
-      expect(loc.county_fips).to.equal('04013');
+      expect(loc.county_code).to.equal('04013');
     });
 
   });

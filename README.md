@@ -23,6 +23,6 @@ import { getIpToLocationFn } from '@fuzzysaj/ip-to-geo-location'
   // -> { continent: "North America", continent_code: "NA",
   //      country: "United States", country_code: "US", region: "Washington",
   //      region_code: "WA", region_type: "State", city: "Seattle",
-  //      lat: 47.6348, lon: -122.3451, county: "King", county_fips: "53033" }
+  //      lat: 47.6348, lon: -122.3451, county: "King", county_code: "53033" }
 })();
 ```

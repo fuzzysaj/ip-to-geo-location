@@ -14,7 +14,7 @@ export const getAddCountyFn = async () =>
  * @param loc Location object that includes lat, lon and optionally country.  If country
  * is set and is not 'us' or 'US', then no lookup is done and original loc is returned.
  * @param
- * @returns A copy of loc with with county_name and county_fips set according to lookup.
+ * @returns A copy of loc with with county and county_code set according to lookup.
  */
 const addCounty = (locToCountyService: (lat: number, lon: number) => County) =>
   (loc: Location): Location =>
@@ -24,5 +24,5 @@ const addCounty = (locToCountyService: (lat: number, lon: number) => County) =>
   if (!loc.lat || !loc.lon ) return loc; 
   const c = locToCountyService(loc.lat, loc.lon);
   if (!c) return loc;
-  return { ...loc, county: c.county_name, county_fips: c.county_fips };
+  return { ...loc, county: c.county_name, county_code: c.county_fips };
 }
