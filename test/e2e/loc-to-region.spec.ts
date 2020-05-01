@@ -3,7 +3,7 @@ import { getAddRegionFn, iso3116_2_toRegionCode } from '../../src/loc-to-region'
 import 'mocha';
 import { expect } from 'chai';
 
-describe('ip-to-region', function() {
+describe('loc-to-region', function() {
 
   const phxLatLon: Location = { lat: 33.5038, lon: -112.0253 };
   let addRegion: ((loc: Location) => Location);

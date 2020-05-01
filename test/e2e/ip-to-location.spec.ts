@@ -36,6 +36,9 @@ describe('ip-to-location', function() {
       expect(loc.country).to.equal('United States');
       expect(loc.country_code).to.equal('US');
 
+      expect(loc.continent).to.equal('North America');
+      expect(loc.continent_code).to.equal('NA');
+
       expect(loc.region).to.equal('Arizona');
       expect(loc.region_code).to.equal('AZ');
       expect(loc.region_type).to.equal('State');

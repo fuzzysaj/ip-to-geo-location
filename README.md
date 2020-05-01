@@ -20,7 +20,8 @@ import { getIpToLocationFn } from '@fuzzysaj/ip-to-geo-location'
 (async ()=> {
   const ipToLoc = await getIpToLocationFn();
   const loc = ipToLoc('3.128.0.0');
-  // -> { country: "United States", country_code: "US", region: "Washington",
+  // -> { continent: "North America", continent_code: "NA",
+  //      country: "United States", country_code: "US", region: "Washington",
   //      region_code: "WA", region_type: "State", city: "Seattle",
   //      lat: 47.6348, lon: -122.3451, county: "King", county_fips: "53033" }
 })();

@@ -1,50 +1,46 @@
 import { Location } from '../../src';
-import { getAddRegionFn, iso3116_2_toRegionCode } from '../../src/loc-to-region';
+import { contiCodeToName, getAddContinentFn } from '../../src/loc-to-continent';
 import 'mocha';
 import { expect } from 'chai';
 
-describe('ip-to-region', function() {
+describe('loc-to-continent', function() {
 
-  const phxLatLon: Location = { lat: 33.5038, lon: -112.0253 };
-  let addRegion: ((loc: Location) => Location);
+  let addConti: ((loc: Location) => Location);
   before(async function() {
-    addRegion = await getAddRegionFn();
+    addConti = await getAddContinentFn();
   });
 
-  describe('iso3116_2_toRegionCode', function() {
-    it('Handles null and non-conforming ISO 3166-2 codes', function() {
-      expect(iso3116_2_toRegionCode(null)).to.equal('');
-      expect(iso3116_2_toRegionCode(' US-AZ')).to.equal('');
-      expect(iso3116_2_toRegionCode('US-~AZ')).to.equal('');
-      expect(iso3116_2_toRegionCode('U-AZ')).to.equal('');
-    });
-
-    it('Handles conforming ISO 3166-2 codes and conforming codes with extra characters on end', function() {
-      expect(iso3116_2_toRegionCode('US-AZ~')).to.equal('AZ');
-      expect(iso3116_2_toRegionCode('uS-aZ1')).to.equal('AZ1');
-      expect(iso3116_2_toRegionCode('uS-aZ12')).to.equal('AZ1');
+  describe('contiCodeToName', function() {
+    it('Returns full names from two character continent codes', function() {
+      expect(contiCodeToName(null)).to.equal('Unknown');
+      expect(contiCodeToName('NA')).to.equal('North America');
+      expect(contiCodeToName('AU')).to.equal('Oceania');
+      expect(contiCodeToName('OC')).to.equal('Oceania');
+      expect(contiCodeToName('US')).to.equal('Unknown');
     });
 
   });
 
-  describe('addRegion', function() {
+  describe('addConti', function() {
 
     it('Handles null locations', async function() {
-      expect(addRegion(null)).to.be.null;
+      expect(addConti(null)).to.be.null;
     });
 
-    it('Finds correct region for known lat lon', function () {
-      const loc = addRegion(phxLatLon);
-      expect({lat: loc.lat, lon: loc.lon}).to.deep.equal(phxLatLon);
-      expect(loc.region).to.equal('Arizona');
-      expect(loc.region_code).to.equal('AZ');
-      expect(loc.region_type).to.equal('State');
+    it('Finds correct continent name and codes', function () {
+      const locUS = addConti({ country_code: 'US', lat: 0, lon: 0 });
+      expect(locUS.continent).to.equal('North America');
+      expect(locUS.continent_code).to.equal('NA');
+      const locBR = addConti({ country_code: 'BR', lat: 0, lon: 0 });
+      expect(locBR.continent).to.equal('South America');
+      expect(locBR.continent_code).to.equal('SA');
     });
 
-    it('Does not add region for unknown lat lon', function () {
+    it('Returns unknown for unknown country codes', function () {
       const nowhere: Location = { lat: 0, lon: 0 };
-      const loc = addRegion(nowhere);
-      expect({lat: 0, lon: 0}).to.deep.equal(nowhere);
+      const loc = addConti({ country_code: 'ZZ', lat: 0, lon: 0 });
+      expect(loc.continent).to.equal('Unknown');
+      expect(loc.continent_code).to.equal('--');
     });
 
   });

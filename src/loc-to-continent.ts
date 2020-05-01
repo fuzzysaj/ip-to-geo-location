@@ -7,23 +7,14 @@ import * as csvParse from 'csv-parse';
 
 export function contiCodeToName( code ) {
   switch (code) {
-    case 'AF':
-      return 'Africa';
-    case 'AN':
-      return 'Antarctica'
-    case 'AS':
-      return 'Asia';
-    case 'EU':
-      return 'Europe';
-    case 'OC':
-    case 'AU':
-      return 'Oceania';
-    case 'NA':
-      return 'North America';
-    case 'SA':
-      return 'South America';
-    default:
-      return 'Unknown';
+    case 'AF': return 'Africa';
+    case 'AN': return 'Antarctica'
+    case 'AS': return 'Asia';
+    case 'EU': return 'Europe';
+    case 'OC': case 'AU': return 'Oceania';
+    case 'NA': return 'North America';
+    case 'SA': return 'South America';
+    default: return 'Unknown';
   }
 }
 
@@ -43,7 +34,7 @@ const addContinent = countryToContinentMap =>
   (loc: Location): Location =>
 {
   if (!loc) return loc;
-  const code = countryToContinentMap.get(loc.country_code);
+  const code = countryToContinentMap.get(loc.country_code) ?? '--';
   return {
     ...loc,
     continent: contiCodeToName(code),
@@ -73,10 +64,4 @@ const getContinentLookupTable = (() => {
     if (table.size === 0) throw new Error('No entries added to country to continent table.');
     return table;
   }
-})();
-
-(async ()=> {
-  const addConti = await getAddContinentFn();
-  let cc = 'BR';
-  console.log(`'${cc}' location:`, addConti({country_code: cc, lat: 0, lon: 0}));
 })();
