@@ -21,8 +21,16 @@ import { getIpToLocationFn } from '@fuzzysaj/ip-to-geo-location'
   const ipToLoc = await getIpToLocationFn();
   const loc = ipToLoc('3.128.0.0');
   // -> { continent: "North America", continent_code: "NA",
-  //      country: "United States", country_code: "US", region: "Washington",
-  //      region_code: "WA", region_type: "State", city: "Seattle",
-  //      lat: 47.6348, lon: -122.3451, county: "King", county_code: "53033" }
+  //      country: "United States", country_code: "US", country_geonameid: 6252001,
+  //      region: "Ohio", region_code: "OH", region_type: "State",
+  //      city: "Columbus", city_geonameid: 4509177,
+  //      lat: 39.9653, lon: -83.0235, county: "Franklin", county_code: "39049" }
 })();
 ```
+
+## Geonameid
+
+The `city_geonameid` and and `country_geonameid` fields correspond to feature `geonameid`
+fields from [GeoNames](https://www.geonames.org/).  According to this
+(http://forum.geonames.org/gforum/posts/list/36274.page)[FAQ], `geonameid`s do not change
+over time and can therefore be used as primary keys in a database.

@@ -25,17 +25,21 @@ const ipToCityCountryLoc = maxMindLookup =>
 {
   if (typeof ip !== "string") throw new TypeError("Not a string.");
   const city = maxMindLookup.get(ip);
-  if (!city || !city.city || !city.country || !city.location) {
+  debug(`ipToCityCountryLoc('${ip}') -> ${JSON.stringify(city)}`);
+  if (!city || !city.city || !city.country || !city.location || !city.city.geoname_id) {
     debug(`Lat/long, city, and country lookup failed for ${ip}`);
     return null;
   }
   const { latitude: lat, longitude: lon } = city.location;
   debug(`${ip} => city: ${city.city.names.en}, country: ${city.country.names.en}, `
-     + `location: {lat: ${lat}, lon: ${lon}}`);
+    + `country_geonameid: ${city.country.geoname_id}` 
+    + `location: {lat: ${lat}, lon: ${lon}}, city_geonameid: ${city.city.geoname_id}`);
   return {
+    city_geonameid: city.city.geoname_id,
+    city: city.city.names.en,
     country: city.country.names.en,
     country_code: city.country.iso_code,
-    city: city.city.names.en,
+    country_geonameid: city.country.geoname_id,
     lat: lat,
     lon: lon
   }

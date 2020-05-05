@@ -31,10 +31,14 @@ describe('ip-to-location', function() {
       expect(loc.lon).to.exist;
       expect(loc.lat).to.almost.equal(33.5);
       expect(loc.lon).to.almost.equal(-112.1);
+      expect(loc.city_geonameid).to.exist;
+      expect(loc.city_geonameid).to.equal(5308655);
       expect(loc.city).to.exist;
       expect(loc.city).to.equal('Phoenix');
       expect(loc.country).to.equal('United States');
       expect(loc.country_code).to.equal('US');
+      expect(loc.country_geonameid).to.exist;
+      expect(loc.country_geonameid).to.equal(6252001);
 
       expect(loc.continent).to.equal('North America');
       expect(loc.continent_code).to.equal('NA');

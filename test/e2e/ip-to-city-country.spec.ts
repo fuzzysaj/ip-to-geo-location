@@ -25,11 +25,14 @@ describe('ip-to-city-country', function() {
       const phxIp = '148.167.2.30';
       const loc = ipToCityCountryLoc(phxIp);
       expect(loc).to.exist;
+      expect(loc.city_geonameid).to.exist;
       expect(loc.lat).to.exist;
       expect(loc.lon).to.exist;
       expect(loc.lat).to.almost.equal(33.5);
       expect(loc.lon).to.almost.equal(-112.1);
       expect(loc.city).to.exist;
+      expect(loc.country_geonameid).to.exist;
+      expect(loc.country_geonameid).to.equal(6252001);
       expect(loc.city).to.equal('Phoenix');
       expect(loc.country).to.equal('United States');
       expect(loc.country_code).to.equal('US');

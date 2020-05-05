@@ -1,6 +1,9 @@
 export interface Location {
+  city_geonameid?: number,
+  city?: string
   country?: string,
   country_code?: string,
+  country_geonameid?: number,
   region?: string,
   region_code?: string,
   region_type?: string, // type_en
@@ -8,7 +11,6 @@ export interface Location {
   county_code?: string,
   continent?: string,
   continent_code?: string,
-  city?: string
   lat: number,
   lon: number
 };
