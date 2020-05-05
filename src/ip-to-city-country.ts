@@ -32,7 +32,7 @@ const ipToCityCountryLoc = maxMindLookup =>
   }
   const { latitude: lat, longitude: lon } = city.location;
   debug(`${ip} => city: ${city.city.names.en}, country: ${city.country.names.en}, `
-    + `country_geonameid: ${city.country.geoname_id}` 
+    + `country_geonameid: ${city.country.geoname_id}, ` 
     + `location: {lat: ${lat}, lon: ${lon}}, city_geonameid: ${city.city.geoname_id}`);
   return {
     city_geonameid: city.city.geoname_id,
