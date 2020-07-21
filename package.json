@@ -55,7 +55,7 @@
     "@types/ramda": "^0.27.4",
     "@types/tar-stream": "^2.1.0",
     "chai-almost": "^1.0.1",
-    "codecov": "^3.6.5",
+    "codecov": "^3.7.1",
     "nyc": "^15.0.1",
     "source-map-support": "^0.5.19",
     "ts-node": "^8.9.1",
