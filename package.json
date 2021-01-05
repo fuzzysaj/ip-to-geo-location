@@ -32,7 +32,7 @@
   "dependencies": {
     "@fuzzysaj/location-to-usa-county": "^1.0.4",
     "@fuzzysaj/nat-earth-geojson-cache": "^1.0.4",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "chai": "^4.2.0",
     "csv-parse": "^4.9.0",
     "debug": "^4.1.1",
