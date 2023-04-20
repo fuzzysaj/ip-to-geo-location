@@ -3,7 +3,8 @@ import Debug from 'debug';
 const debug = Debug('ip-to-geo-location');
 import * as path from 'path';
 import * as fs from 'fs';
-import * as csvParse from 'csv-parse';
+// import * as csvParse from 'csv-parse';
+import { Parser } from 'csv-parse'
 
 export function contiCodeToName( code ) {
   switch (code) {
@@ -55,7 +56,7 @@ const getContinentLookupTable = (() => {
     }
     debug(`Country to continent table has not been loaded yet.  Initializing....`);
     const csvPath = path.join(__dirname, '../data/country_continent.csv');
-    const parser = csvParse( { columns: true } );
+    const parser = new Parser({ columns: true, skipEmptyLines: true});
     const readable = fs.createReadStream(csvPath, { encoding: 'utf8' }).pipe(parser);
     for await (const r of readable) {
       table.set(r['iso 3166 country'], r['continent code']);
